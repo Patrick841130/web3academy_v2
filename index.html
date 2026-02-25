@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <!-- ===== Primary SEO Meta Tags ===== -->
+  <title>웹3 사관학교 | 실전 웹3·AI 자산관리사 양성 과정</title>
+  <meta name="description"
+    content="웹3·AI 시대, 단순한 사용자가 아닌 주권을 쥔 관리자가 되십시오. 실전 웹3 기술 세미나 및 자산관리사 양성 과정. 블록체인 기술 컨설팅 및 전문가 네트워킹 그룹." />
+  <meta name="keywords" content="웹3 사관학교, 웹3 자산관리사, 블록체인 교육, 암호화폐, NFT, DeFi, 웹3 교육, AI 자산관리, 블록체인 컨설팅, 웹3 세미나" />
+  <meta name="author" content="주식회사 엘케이브라더스" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#0F172A" />
+  <link rel="canonical" href="https://web3academy.kr/" />
+
+  <!-- ===== Favicon ===== -->
+  <link rel="icon" type="image/png" href="/images/logo.png" />
+  <link rel="apple-touch-icon" href="/images/logo.png" />
+
+  <!-- ===== Open Graph / Facebook ===== -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://web3academy.kr/" />
+  <meta property="og:title" content="웹3 사관학교 | 실전 웹3·AI 자산관리사 양성 과정" />
+  <meta property="og:description" content="웹3·AI 시대, 단순한 사용자가 아닌 주권을 쥔 관리자가 되십시오. 실전 웹3 기술 세미나 및 자산관리사 양성 과정." />
+  <meta property="og:image" content="https://web3academy.kr/images/logo.png" />
+  <meta property="og:site_name" content="웹3 사관학교" />
+  <meta property="og:locale" content="ko_KR" />
+
+  <!-- ===== Twitter Card ===== -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="웹3 사관학교 | 실전 웹3·AI 자산관리사 양성 과정" />
+  <meta name="twitter:description" content="웹3·AI 시대, 단순한 사용자가 아닌 주권을 쥔 관리자가 되십시오. 실전 웹3 기술 세미나 및 자산관리사 양성 과정." />
+  <meta name="twitter:image" content="https://web3academy.kr/images/logo.png" />
+
+  <!-- ===== Structured Data (JSON-LD) ===== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    "name": "웹3 사관학교",
+    "alternateName": "Web3 Academy",
+    "url": "https://web3academy.kr",
+    "logo": "https://web3academy.kr/images/logo.png",
+    "description": "실전 웹3 기술 세미나 및 웹3 자산관리사 양성 과정. 블록체인 기술 컨설팅 및 전문가 네트워킹 그룹.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "논현로87길 19, 6층",
+      "addressLocality": "강남구",
+      "addressRegion": "서울특별시",
+      "addressCountry": "KR"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "info@lkbrothers.com",
+      "contactType": "customer service"
+    },
+    "founder": {
+      "@type": "Person",
+      "name": "이상연"
+    },
+    "sameAs": []
+  }
+  </script>
+
+  <!-- ===== Fonts ===== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+
+<body>
+
+  <!-- ========== HEADER (공통) ========== -->
+  <header id="header">
+    <div class="header-inner">
+      <a href="/" class="logo" data-link>
+        <img src="/images/logo.png" alt="웹3 사관학교" class="logo-img" />
+        <span class="logo-text">웹3 사관학교</span>
+      </a>
+      <nav class="nav-menu" id="navMenu">
+        <a href="/vision" class="nav-link" data-link>비전</a>
+        <a href="/curriculum" class="nav-link" data-link>교육과정</a>
+        <a href="/career" class="nav-link" data-link>커리어</a>
+        <a href="/news" class="nav-link" data-link>소식</a>
+      </nav>
+      <a href="#" class="btn-cta-header" onclick="openConsultationModal('1'); return false;">상담 신청</a>
+      <button class="menu-toggle" id="mobileMenuBtn" aria-label="메뉴 열기">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ========== MAIN CONTENT (라우터 마운트) ========== -->
+  <main id="app"></main>
+
+  <!-- ========== FOOTER (공통) ========== -->
+  <footer id="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="/" class="logo footer-logo" data-link>
+            <img src="/images/logo.png" alt="웹3 사관학교" class="logo-img footer-logo-img" />
+            <span class="logo-text">웹3 사관학교</span>
+          </a>
+          <p class="footer-tagline">블록체인 기술 컨설팅 및 전문가 네트워킹 그룹</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <h5>프로그램</h5>
+            <a href="/curriculum" data-link>기초훈련반</a>
+            <a href="/curriculum" data-link>생도육성반</a>
+            <a href="/curriculum" data-link>장교임관반</a>
+          </div>
+          <div class="footer-col">
+            <h5>안내</h5>
+            <a href="/vision" data-link>비전</a>
+            <a href="/career" data-link>커리어</a>
+            <a href="/news" data-link>소식</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-disclaimer">
+        <p>본 기관은 학원법에 따른 입시 학원이 아닌, 블록체인 기술 컨설팅 및 전문가 네트워킹 그룹입니다. 모든 과정은 '기술 세미나' 및 '포럼' 형태로 진행됩니다.</p>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-company-info">
+          <p><strong>주식회사 엘케이브라더스</strong> | 대표: 이상연</p>
+          <p>사업자등록번호: 753-81-02362 | 블록체인 기술 컨설팅 및 전문가 네트워킹 그룹</p>
+          <p>주소: 서울특별시 강남구 논현로87길 19, 6층</p>
+          <p>이메일: info@lkbrothers.com</p>
+        </div>
+        <p class="footer-copyright">© 2026 웹3 사관학교. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========== CONSULTATION MODAL ========== -->
+  <div id="consultationModal" class="popup-overlay">
+    <div class="popup-content" style="max-width: 400px; padding: 40px 32px;">
+      <button class="popup-close" id="consultationCloseBtn" aria-label="닫기">&times;</button>
+      <h3 class="popup-title" style="font-size: 24px;">입교 상담 신청</h3>
+      <p class="popup-info"
+        style="background:transparent; padding:0; text-align:center; font-size:14px; margin-bottom:24px;">
+        상담 유형: <strong id="consultationTypeLabel" style="width:auto;">일반 상담</strong>
+      </p>
+
+      <form id="consultationForm" class="consultation-form">
+        <div class="form-group">
+          <input type="text" id="consultName" name="name" class="form-input" placeholder="이름을 입력하세요" required>
+        </div>
+        <div class="form-group">
+          <input type="tel" id="consultPhone" name="phone" class="form-input" placeholder="연락처 (010-XXXX-XXXX)"
+            required>
+        </div>
+
+        <div class="form-checkbox-group">
+          <label class="custom-checkbox">
+            <input type="checkbox" id="consultConsent" required>
+            <span class="checkmark"></span>
+            <span class="checkbox-label">개인정보 수집 및 이용에 동의합니다.</span>
+          </label>
+        </div>
+
+        <button type="submit" class="btn-primary" id="consultSubmitBtn" disabled>상담 신청하기</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ========== TOAST NOTIFICATION ========== -->
+  <div id="toastNotification" class="toast">
+    <div class="toast-content">
+      <div class="toast-icon">✅</div>
+      <div class="toast-message">상담 신청이 완료되었습니다. 교관이 곧 연락드리겠습니다.</div>
+    </div>
+  </div>
+
+  <!-- ========== AMBASSADOR POPUP ========== -->
+  <div id="ambassadorPopup" class="popup-overlay">
+    <div class="popup-content">
+      <button class="popup-close" id="popupCloseBtn" aria-label="닫기">&times;</button>
+      <div class="popup-badge">SPECIAL EVENT</div>
+      <h3 class="popup-title">2030 Web3 엠베서더 1기<br>선착순 10명 모집</h3>
+      <div class="popup-info">
+        <p><strong>개강:</strong> 3월 9일</p>
+        <p><strong>일정:</strong> 매주 월/수 오전 10시-1시 (2개월)</p>
+        <p><strong>혜택:</strong> 교육비 전액 무료</p>
+        <p><strong>조건:</strong> SNS 콘텐츠 제작 및 촬영 협조</p>
+      </div>
+      <a href="https://forms.gle/nZroyNASvVKFpk3K7" target="_blank" rel="noopener noreferrer" class="btn-neon"
+        id="popupApplyBtn">선착순 지원하기</a>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>
