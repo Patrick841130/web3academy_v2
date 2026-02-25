@@ -4,6 +4,27 @@
 
 import { initRouter } from './router.js';
 
+/**
+ * Convert Google Drive sharing URLs to embeddable image URLs.
+ * Input:  https://drive.google.com/file/d/FILE_ID/view?usp=sharing
+ * Output: https://drive.google.com/thumbnail?id=FILE_ID&sz=w800
+ */
+function convertGoogleDriveUrl(url) {
+  if (!url) return null;
+  // Match Google Drive file links
+  const match = url.match(/drive\.google\.com\/file\/d\/([a-zA-Z0-9_-]+)/);
+  if (match && match[1]) {
+    return `https://drive.google.com/thumbnail?id=${match[1]}&sz=w800`;
+  }
+  // Match Google Drive open links
+  const match2 = url.match(/drive\.google\.com\/open\?id=([a-zA-Z0-9_-]+)/);
+  if (match2 && match2[1]) {
+    return `https://drive.google.com/thumbnail?id=${match2[1]}&sz=w800`;
+  }
+  // Already a direct URL, return as-is
+  return url;
+}
+
 // Wait for DOM
 document.addEventListener('DOMContentLoaded', () => {
   initHeader();
@@ -457,10 +478,11 @@ async function initNews() {
       const thumbClass = isLarge ? 'news-thumb news-thumb-large' : 'news-thumb';
       const titleClass = isLarge ? 'news-title-large' : 'news-title';
 
-      // Determine Thumbnail
+      // Determine Thumbnail — convert Google Drive share links to embeddable URLs
       let thumbHtml = '';
-      if (n.image) {
-        thumbHtml = `<img src="${n.image}" alt="${n.title}" style="width:100%; height:100%; object-fit:cover;">`;
+      const imgUrl = n.image ? convertGoogleDriveUrl(n.image) : null;
+      if (imgUrl) {
+        thumbHtml = `<img src="${imgUrl}" alt="${n.title}" style="width:100%; height:100%; object-fit:cover;" referrerpolicy="no-referrer">`;
       } else {
         thumbHtml = `
           <div class="news-thumb-placeholder">

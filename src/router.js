@@ -57,14 +57,17 @@ export async function navigate(path, pushState = true) {
     const app = document.getElementById('app');
     if (!app) return;
 
-    // Normalise path
+    // Normalise path — separate query string
     path = path || '/';
-    if (path !== '/' && path.endsWith('/')) path = path.slice(0, -1);
+    const [basePath, queryString] = path.split('?');
+    let cleanPath = basePath;
+    if (cleanPath !== '/' && cleanPath.endsWith('/')) cleanPath = cleanPath.slice(0, -1);
+    const fullUrl = queryString ? `${cleanPath}?${queryString}` : cleanPath;
 
     // Skip if already on same page
-    if (path === currentPath) return;
+    if (fullUrl === currentPath) return;
 
-    const renderFn = routes[path] || routes['/'];
+    const renderFn = routes[cleanPath] || routes['/'];
 
     // ---- Fade Out ----
     app.classList.remove('page-enter');
@@ -74,10 +77,10 @@ export async function navigate(path, pushState = true) {
 
     // ---- Swap Content ----
     app.innerHTML = renderFn();
-    currentPath = path;
+    currentPath = fullUrl;
 
     if (pushState) {
-        history.pushState({ path }, '', path);
+        history.pushState({ path: fullUrl }, '', fullUrl);
     }
 
     // Scroll to top
@@ -90,13 +93,13 @@ export async function navigate(path, pushState = true) {
     app.classList.add('page-enter');
 
     // Update active nav link
-    updateActiveNav(path);
+    updateActiveNav(cleanPath);
 
     // Update page title & meta description for SEO
-    updatePageMeta(path);
+    updatePageMeta(cleanPath);
 
     // Dispatch custom event so main.js can re-init animations
-    window.dispatchEvent(new CustomEvent('page:rendered', { detail: { path } }));
+    window.dispatchEvent(new CustomEvent('page:rendered', { detail: { path: cleanPath } }));
 }
 
 /**
