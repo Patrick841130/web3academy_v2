@@ -4,6 +4,9 @@
 
 import { initRouter } from './router.js';
 
+// API base URL: empty in dev (Vite proxy), Railway URL in production
+const API_BASE = import.meta.env.VITE_API_URL || '';
+
 /**
  * Convert Google Drive sharing URLs to embeddable image URLs.
  * Input:  https://drive.google.com/file/d/FILE_ID/view?usp=sharing
@@ -249,7 +252,7 @@ function initConsultation() {
 
     try {
       // Send to Railway backend API
-      const response = await fetch('/api/consultations', {
+      const response = await fetch(`${API_BASE}/api/consultations`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -293,7 +296,7 @@ async function initAdminConsultations() {
     tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;">데이터를 불러오는 중입니다...</td></tr>';
     try {
       // In production, you would attach authentication token headers
-      const res = await fetch('/api/consultations');
+      const res = await fetch(`${API_BASE}/api/consultations`);
       if (!res.ok) throw new Error('API ERROR');
 
       allConsultations = await res.json();
@@ -364,7 +367,7 @@ function initAdminNewsNew() {
     if (submitBtn) submitBtn.innerHTML = '수정 완료하기';
 
     // Pre-fill the form
-    fetch('/api/news')
+    fetch(`${API_BASE}/api/news`)
       .then(res => res.json())
       .then(newsList => {
         const article = newsList.find(n => n.id === parseInt(editId));
@@ -396,7 +399,7 @@ function initAdminNewsNew() {
     };
 
     try {
-      const url = isEditMode ? `/api/news/${editId}` : '/api/news';
+      const url = isEditMode ? `${API_BASE}/api/news/${editId}` : `${API_BASE}/api/news`;
       const method = isEditMode ? 'PUT' : 'POST';
 
       const res = await fetch(url, {
@@ -442,7 +445,7 @@ async function initNews() {
 
   const fetchNews = async () => {
     try {
-      const res = await fetch('/api/news');
+      const res = await fetch(`${API_BASE}/api/news`);
       if (!res.ok) throw new Error('API Error');
       allNews = await res.json();
       renderNews();
@@ -551,7 +554,7 @@ async function initAdminNews() {
     if (!confirm('정말로 이 소식을 삭제하시겠습니까? (이 작업은 되돌릴 수 없습니다)')) return;
 
     try {
-      const res = await fetch(`/api/news/${id}`, { method: 'DELETE' });
+      const res = await fetch(`${API_BASE}/api/news/${id}`, { method: 'DELETE' });
       if (!res.ok) throw new Error('Delete failed');
 
       alert('소식이 성공적으로 삭제되었습니다.');
