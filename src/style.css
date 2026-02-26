@@ -528,6 +528,14 @@ img {
     padding: 14px 28px;
     font-size: 14px;
   }
+
+  .hero-scroll-indicator {
+    display: none;
+  }
+
+  #hero {
+    padding-bottom: 60px;
+  }
 }
 
 @media (max-width: 480px) {
