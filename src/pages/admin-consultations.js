@@ -23,7 +23,6 @@ export function renderAdminConsultations() {
   <section class="section admin-section" style="min-height: 50vh;">
     <div class="container">
       <div class="admin-toolbar" data-animate="fade-up">
-      <div class="admin-toolbar" data-animate="fade-up">
         <label for="consultFilter">유형 필터:</label>
         <select id="consultFilter" class="form-select">
           <option value="all">전체</option>
