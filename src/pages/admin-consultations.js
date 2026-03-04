@@ -41,11 +41,12 @@ export function renderAdminConsultations() {
               <th>연락처</th>
               <th>상담 유형</th>
               <th>신청 일시</th>
+              <th>관리</th>
             </tr>
           </thead>
           <tbody id="consultTableBody">
             <tr>
-              <td colspan="5" class="text-center">데이터를 불러오는 중입니다...</td>
+              <td colspan="6" class="text-center">데이터를 불러오는 중입니다...</td>
             </tr>
           </tbody>
         </table>

@@ -293,7 +293,7 @@ async function initAdminConsultations() {
   let allConsultations = [];
 
   const fetchConsultations = async () => {
-    tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;">데이터를 불러오는 중입니다...</td></tr>';
+    tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;">데이터를 불러오는 중입니다...</td></tr>';
     try {
       // In production, you would attach authentication token headers
       const res = await fetch(`${API_BASE}/api/consultations`);
@@ -303,7 +303,7 @@ async function initAdminConsultations() {
       renderTable();
     } catch (err) {
       console.error(err);
-      tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;color:#ef4444;">데이터를 불러올 수 없습니다.</td></tr>';
+      tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;color:#ef4444;">데이터를 불러올 수 없습니다.</td></tr>';
     }
   };
 
@@ -316,7 +316,7 @@ async function initAdminConsultations() {
     }
 
     if (filtered.length === 0) {
-      tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;">등록된 상담 신청 내역이 없습니다.</td></tr>';
+      tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;">등록된 상담 신청 내역이 없습니다.</td></tr>';
       return;
     }
 
@@ -333,10 +333,30 @@ async function initAdminConsultations() {
           <td><a href="tel:${c.phone}" style="color:var(--accent-blue-light); text-decoration:none;">${c.phone}</a></td>
           <td>${typeStr}</td>
           <td style="color:var(--text-secondary);">${date}</td>
+          <td style="text-align:center;">
+            <button class="btn-secondary" style="padding:4px 8px; font-size:12px; border-color:#ef4444; color:#ef4444;" onclick="deleteConsultationAction(${c.id})">삭제</button>
+          </td>
         </tr>
       `;
     }).join('');
   };
+
+  const deleteConsultation = async (id) => {
+    if (!confirm('정말로 이 상담 신청 내역을 삭제하시겠습니까? (이 작업은 되돌릴 수 없습니다)')) return;
+
+    try {
+      const res = await fetch(`${API_BASE}/api/consultations/${id}`, { method: 'DELETE' });
+      if (!res.ok) throw new Error('Delete failed');
+
+      alert('상담 신청 내역이 삭제되었습니다.');
+      fetchConsultations(); // Refresh list
+    } catch (err) {
+      console.error(err);
+      alert('삭제 중 오류가 발생했습니다.');
+    }
+  };
+
+  window.deleteConsultationAction = deleteConsultation; // Expose to global for inline onclick
 
   if (filterSelect) {
     filterSelect.addEventListener('change', renderTable);
